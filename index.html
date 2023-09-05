@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="index.css">
+<head>
+    <meta charset="UTF-8">
+    <title>escaperoom</title>
+
+</head>
+<body>
+
+<h1> Voltooi voor een gratis koelkast! </h1>
+
+<!--verdeel pagina in 9 vlakken-->
+
+<span>
+    <div id="boxA">
+        A
+    </div>
+    <div id="boxB">
+        B
+    </div>
+    <div id="boxC">
+        C
+    </div>
+    <div id="boxD">
+        D
+    </div>
+    <div id="boxE">
+        E
+    </div>
+    <div id="boxF">
+        F
+    </div>
+    <div id="boxG">
+        G
+    </div>
+    <div id="boxH">
+        H
+    </div>
+    <div id="boxI">
+        I
+    </div>
+
+</span>
+
+<!-- onderaan 1 groot vlak voor tekst -->
+<p>Jouw antwoord:</p>
+<p id="p1"></p>
+
+<!--maak een button-->
+
+<button id="button" onclick="checkAnswer()">
+    Druk dan. Als je durft.
+</button>
+
+<!--pas flex toe op de vlakken-->
+
+<!--JS: maak functie voor 1e vlak (component?)-->
+
+<!--JS: in geval van component: pas toe op de rest
+        geval van niet: maak functies voor alle vlakken in juiste volgorde -->
+
+<!--JS: bericht bij goede handeling-->
+
+<!--JS: error bij onjuiste handeling -->
+
+<!--CSS: make it look nice (: -->
+
+<script>
+
+    const boxA = document.getElementById("boxA");
+    const boxB = document.getElementById("boxB");
+    const boxC = document.getElementById("boxC");
+    const boxD = document.getElementById("boxD");
+    const boxE = document.getElementById("boxE");
+    const boxF = document.getElementById("boxF");
+    const boxG = document.getElementById("boxG");
+    const boxH = document.getElementById("boxH");
+    const boxI = document.getElementById("boxI");
+
+    const alphabet = []
+    document.getElementById("p1").innerHTML = alphabet;
+
+    boxA.addEventListener('click', function () {
+        alphabet.push("A")
+        document.getElementById("p1").innerHTML = alphabet;
+    });
+
+    boxB.addEventListener('click', function () {
+        alphabet.push("B")
+        document.getElementById("p1").innerHTML = alphabet;
+    });
+
+    boxC.addEventListener('click', function () {
+        alphabet.push("C")
+        document.getElementById("p1").innerHTML = alphabet;
+    });
+
+    boxD.addEventListener('click', function () {
+        alphabet.push("D")
+        document.getElementById("p1").innerHTML = alphabet;
+    });
+
+    boxE.addEventListener('click', function () {
+        alphabet.push("E")
+        document.getElementById("p1").innerHTML = alphabet;
+    });
+
+    boxF.addEventListener('click', function () {
+        alphabet.push("F")
+        document.getElementById("p1").innerHTML = alphabet;
+    });
+
+    boxG.addEventListener('click', function () {
+        alphabet.push("G")
+        document.getElementById("p1").innerHTML = alphabet;
+    });
+
+    boxH.addEventListener('click', function () {
+        alphabet.push("H")
+        document.getElementById("p1").innerHTML = alphabet;
+    });
+
+    boxI.addEventListener('click', function () {
+        alphabet.push("I")
+        document.getElementById("p1").innerHTML = alphabet;
+    });
+
+    // function checkAnswer () {
+    //     if () {
+    //         console.log("Yeah!")
+    //     } else {
+    //         console.log("mwamwa. Probeer opnieuw (:")
+    //     }
+    // }
+
+    function checkAnswer() {
+        document.getElementById("button").innerHTML = "JE KUNT JE KOELKAST OPHALEN!"
+    };
+
+</script>
+</body>
+</html>
