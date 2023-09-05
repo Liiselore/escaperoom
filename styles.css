@@ -1,0 +1,36 @@
+body {
+    margin: 50px;
+    font-family: Calibri;
+}
+
+h1 {
+    font-size: 30px;
+}
+
+p {
+    font-size: 13px;
+}
+
+span {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+div {
+    border: solid 1px black;
+    padding: 50px;
+    margin: 10px;
+}
+
+div:hover {
+    transform: scale(1.1);
+}
+
+p {
+    padding: 20px;
+}
+
+button {
+
+}
