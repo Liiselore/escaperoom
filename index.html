@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="styles.css">
 <head>
     <meta charset="UTF-8">
     <title>escaperoom</title>
-
 </head>
 <body>
 
@@ -40,7 +39,6 @@
     <div id="boxI">
         I
     </div>
-
 </span>
 
 <!-- onderaan 1 groot vlak voor tekst -->
@@ -126,18 +124,13 @@
         document.getElementById("p1").innerHTML = alphabet;
     });
 
-    // function checkAnswer () {
-    //     if () {
-    //         console.log("Yeah!")
-    //     } else {
-    //         console.log("mwamwa. Probeer opnieuw (:")
-    //     }
-    // }
-
-    function checkAnswer() {
-        document.getElementById("button").innerHTML = "JE KUNT JE KOELKAST OPHALEN!"
-    };
-
+    function checkAnswer () {
+        if (alphabet.toString() === 'A,B') {
+            document.getElementById("button").innerHTML = "Yeah! Je hebt gewonnen!"
+        } else {
+            document.getElementById("button").innerHTML = "mwamwa. Probeer opnieuw (:"
+        }
+    }
 </script>
 </body>
 </html>
