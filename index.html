@@ -11,31 +11,31 @@
 
 <!--verdeel pagina in 9 vlakken-->
 <div class="container">
-    <div id="boxA" class="box">
+    <div id="A" class="box">
         A
     </div>
-    <div id="boxB" class="box">
+    <div id="B" class="box">
         B
     </div>
-    <div id="boxC" class="box">
+    <div id="C" class="box">
         C
     </div>
-    <div id="boxD" class="box">
+    <div id="D" class="box">
         D
     </div>
-    <div id="boxE" class="box">
+    <div id="E" class="box">
         E
     </div>
-    <div id="boxF" class="box">
+    <div id="F" class="box">
         F
     </div>
-    <div id="boxG" class="box">
+    <div id="G" class="box">
         G
     </div>
-    <div id="boxH" class="box">
+    <div id="H" class="box">
         H
     </div>
-    <div id="boxI" class="box">
+    <div id="I" class="box">
         I
     </div>
 </div>
@@ -64,63 +64,14 @@
 <!--CSS: make it look nice (: -->
 
 <script>
+    alphabet = [];
+    const boxjes = document.getElementsByClassName('box');
 
-    const boxA = document.getElementById("boxA");
-    const boxB = document.getElementById("boxB");
-    const boxC = document.getElementById("boxC");
-    const boxD = document.getElementById("boxD");
-    const boxE = document.getElementById("boxE");
-    const boxF = document.getElementById("boxF");
-    const boxG = document.getElementById("boxG");
-    const boxH = document.getElementById("boxH");
-    const boxI = document.getElementById("boxI");
-
-    const alphabet = []
-    document.getElementById("p1").innerHTML = alphabet;
-
-    boxA.addEventListener('click', function () {
-        alphabet.push("A")
-        document.getElementById("p1").innerHTML = alphabet;
-    });
-
-    boxB.addEventListener('click', function () {
-        alphabet.push("B")
-        document.getElementById("p1").innerHTML = alphabet;
-    });
-
-    boxC.addEventListener('click', function () {
-        alphabet.push("C")
-        document.getElementById("p1").innerHTML = alphabet;
-    });
-
-    boxD.addEventListener('click', function () {
-        alphabet.push("D")
-        document.getElementById("p1").innerHTML = alphabet;
-    });
-
-    boxE.addEventListener('click', function () {
-        alphabet.push("E")
-        document.getElementById("p1").innerHTML = alphabet;
-    });
-
-    boxF.addEventListener('click', function () {
-        alphabet.push("F")
-        document.getElementById("p1").innerHTML = alphabet;
-    });
-
-    boxG.addEventListener('click', function () {
-        alphabet.push("G")
-        document.getElementById("p1").innerHTML = alphabet;
-    });
-
-    boxH.addEventListener('click', function () {
-        alphabet.push("H")
-        document.getElementById("p1").innerHTML = alphabet;
-    });
-
-    boxI.addEventListener('click', function () {
-        alphabet.push("I")
-        document.getElementById("p1").innerHTML = alphabet;
+    Array.from(boxjes).forEach((boxje) => {
+        boxje.addEventListener('click', function () {
+            alphabet.push(boxje.id)
+            document.getElementById("p1").innerHTML = alphabet;
+        });
     });
 
     function checkAnswer () {
