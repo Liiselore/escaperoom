@@ -9,36 +9,42 @@
 
 <h1>Voltooi voor een gratis koelkast!</h1>
 
-<!--verdeel pagina in 9 vlakken-->
+<p>Klik drie boxjes in de juiste volgorde aan om te winnen.</p>
+
+<!-- implementeer CSS GRID-->
+
 <div class="container">
-    <div id="A" class="box">
+    <div id="A" class="box" data-hint="Dit is de hint voor A">
         A
     </div>
-    <div id="B" class="box">
+    <div id="B" class="box" data-hint="Dit is de hint voor B">
         B
     </div>
-    <div id="C" class="box">
+    <div id="C" class="box" data-hint="Dit is de hint voor C">
         C
     </div>
-    <div id="D" class="box">
+    <div id="D" class="box" data-hint="Dit is de hint voor D">
         D
     </div>
-    <div id="E" class="box">
+    <div id="E" class="box" data-hint="Dit is de hint voor E">
         E
     </div>
-    <div id="F" class="box">
+    <div id="F" class="box" data-hint="Dit is de hint voor F">
         F
     </div>
-    <div id="G" class="box">
+    <div id="G" class="box" data-hint="Dit is de hint voor G">
         G
     </div>
-    <div id="H" class="box">
+    <div id="H" class="box" data-hint="Dit is de hint voor H">
         H
     </div>
-    <div id="I" class="box">
+    <div id="I" class="box" data-hint="Dit is de hint voor I">
         I
     </div>
 </div>
+
+<h2>Gebruik deze hint</h2>
+<span id="hint"></span>
 
 <!-- onderaan 1 groot vlak voor tekst -->
 <p>Jouw antwoord:</p>
@@ -50,32 +56,22 @@
     Druk dan. Als je durft.
 </button>
 
-<!--pas flex toe op de vlakken-->
-
-<!--JS: maak functie voor 1e vlak (component?)-->
-
-<!--JS: in geval van component: pas toe op de rest
-        geval van niet: maak functies voor alle vlakken in juiste volgorde -->
-
-<!--JS: bericht bij goede handeling-->
-
-<!--JS: error bij onjuiste handeling -->
-
 <!--CSS: make it look nice (: -->
 
 <script>
-    alphabet = [];
+    userInput = [];
+    answer = "D,A,E";
     const boxjes = document.getElementsByClassName('box');
 
     Array.from(boxjes).forEach((boxje) => {
         boxje.addEventListener('click', function () {
-            alphabet.push(boxje.id)
-            document.getElementById("p1").innerHTML = alphabet;
+            userInput.push(boxje.id)
+            document.getElementById("p1").innerHTML = userInput;
         });
     });
 
     function checkAnswer () {
-        if (alphabet.toString() === 'A,B') {
+        if (userInput.toString() === answer) {
             document.getElementById("button").innerHTML = "Yeah! Je hebt gewonnen!"
         } else {
             document.getElementById("button").innerHTML = "mwamwa. Probeer opnieuw (:"
