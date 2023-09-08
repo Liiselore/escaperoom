@@ -11,19 +11,19 @@ p {
     font-size: 13px;
 }
 
-span {
+.container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
 
-div {
+.box {
     border: solid 1px black;
     padding: 50px;
     margin: 10px;
 }
 
-div:hover {
+.box:hover {
     transform: scale(1.1);
     cursor: pointer;
 }
