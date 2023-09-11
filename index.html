@@ -50,17 +50,10 @@
 <p>Jouw antwoord:</p>
 <p id="p1"></p>
 
-<!--maak een button-->
-
-<button id="button" onclick="checkWinCondition()">
-    Druk dan. Als je durft.
-</button>
-
 <!--CSS: make it look nice (: -->
-
 <script>
     const userInput = [];
-    const solution = ["D","A","E","D","A","X"];
+    const solution = ["D","A","E","D","A","I"];
 
     let currentAnswerIndex = 0;
     const boxjes = Array.from(document.getElementsByClassName('box'));
@@ -74,12 +67,18 @@
                 document.getElementById("p1").innerHTML = userInput;
                 currentAnswerIndex++;
 
-                // todo: make sure this doesnt break on last boxje
-                updateHint(getBoxje(solution[currentAnswerIndex]))
-
                 boxjes.forEach((boxje) => {
                     boxje.classList.remove('error');
                 });
+
+                if(checkWinCondition()) {
+                    alert('GEWONNEN JUGNE');
+                } else {
+                    // todo: make sure this doesnt break on last boxje
+                    updateHint(getBoxje(solution[currentAnswerIndex]))
+                }
+
+                
             } else {
                 boxje.classList.add('error');
             }
@@ -95,11 +94,7 @@
     }
 
     function checkWinCondition () {
-        if (userInput.toString() === solution.toString()) {
-            document.getElementById("button").innerHTML = "Yeah! Je hebt gewonnen!"
-        } else {
-            document.getElementById("button").innerHTML = "mwamwa. Probeer opnieuw (:"
-        }
+        return userInput.toString() === solution.toString();
     }
 
     function updateHint (boxje) {       
