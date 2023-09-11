@@ -14,31 +14,31 @@
 <!-- implementeer CSS GRID-->
 
 <div class="container">
-    <div id="A" class="box" data-hint="Dit is de hint voor A">
+    <div id="A" class="box" data-hint="Aap">
         A
     </div>
-    <div id="B" class="box" data-hint="Dit is de hint voor B">
+    <div id="B" class="box" data-hint="Banaan">
         B
     </div>
-    <div id="C" class="box" data-hint="Dit is de hint voor C">
+    <div id="C" class="box" data-hint="Comkommer">
         C
     </div>
-    <div id="D" class="box" data-hint="Dit is de hint voor D">
+    <div id="D" class="box" data-hint="Dinosaurus">
         D
     </div>
-    <div id="E" class="box" data-hint="Dit is de hint voor E">
+    <div id="E" class="box" data-hint="Ei">
         E
     </div>
-    <div id="F" class="box" data-hint="Dit is de hint voor F">
+    <div id="F" class="box" data-hint="Fret">
         F
     </div>
-    <div id="G" class="box" data-hint="Dit is de hint voor G">
+    <div id="G" class="box" data-hint="Gay">
         G
     </div>
-    <div id="H" class="box" data-hint="Dit is de hint voor H">
+    <div id="H" class="box" data-hint="Hallo">
         H
     </div>
-    <div id="I" class="box" data-hint="Dit is de hint voor I">
+    <div id="I" class="box" data-hint="Iris">
         I
     </div>
 </div>
@@ -52,30 +52,58 @@
 
 <!--maak een button-->
 
-<button id="button" onclick="checkAnswer()">
+<button id="button" onclick="checkWinCondition()">
     Druk dan. Als je durft.
 </button>
 
 <!--CSS: make it look nice (: -->
 
 <script>
-    userInput = [];
-    answer = "D,A,E";
-    const boxjes = document.getElementsByClassName('box');
+    const userInput = [];
+    const solution = ["D","A","E","D","A","X"];
 
-    Array.from(boxjes).forEach((boxje) => {
+    let currentAnswerIndex = 0;
+    const boxjes = Array.from(document.getElementsByClassName('box'));
+
+    updateHint(getBoxje(solution[currentAnswerIndex]));
+
+    boxjes.forEach((boxje, boxjeIndex) => {
         boxje.addEventListener('click', function () {
-            userInput.push(boxje.id)
-            document.getElementById("p1").innerHTML = userInput;
+            if(checkAnswer(boxje)) {
+                userInput.push(boxje.id)
+                document.getElementById("p1").innerHTML = userInput;
+                currentAnswerIndex++;
+
+                // todo: make sure this doesnt break on last boxje
+                updateHint(getBoxje(solution[currentAnswerIndex]))
+
+                boxjes.forEach((boxje) => {
+                    boxje.classList.remove('error');
+                });
+            } else {
+                boxje.classList.add('error');
+            }
         });
     });
 
-    function checkAnswer () {
-        if (userInput.toString() === answer) {
+    function getBoxje(solutionId) {
+        return document.getElementById(solutionId);
+    }
+
+    function checkAnswer(boxje) {
+        return solution[currentAnswerIndex] === boxje.id;
+    }
+
+    function checkWinCondition () {
+        if (userInput.toString() === solution.toString()) {
             document.getElementById("button").innerHTML = "Yeah! Je hebt gewonnen!"
         } else {
             document.getElementById("button").innerHTML = "mwamwa. Probeer opnieuw (:"
         }
+    }
+
+    function updateHint (boxje) {       
+        document.getElementById("hint").innerHTML = boxje.dataset.hint;
     }
 </script>
 </body>
