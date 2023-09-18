@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="styles.css">
+<head>
+    <meta charset="UTF-8">
+    <title>First Puzzle</title>
+</head>
+<body>
+<h1>Voltooi voor een gratis koelkast!</h1>
+
+<p>Klik drie boxjes in de juiste volgorde aan om te winnen.</p>
+
+<!-- implementeer CSS GRID-->
+
+<div class="container">
+    <div id="A" class="box" data-hint="Aap">
+        A
+    </div>
+    <div id="B" class="box" data-hint="Banaan">
+        B
+    </div>
+    <div id="C" class="box" data-hint="Comkommer">
+        C
+    </div>
+    <div id="D" class="box" data-hint="Dinosaurus">
+        D
+    </div>
+    <div id="E" class="box" data-hint="Ei">
+        E
+    </div>
+    <div id="F" class="box" data-hint="Fret">
+        F
+    </div>
+    <div id="G" class="box" data-hint="Gay">
+        G
+    </div>
+    <div id="H" class="box" data-hint="Hallo">
+        H
+    </div>
+    <div id="I" class="box" data-hint="Iris">
+        I
+    </div>
+</div>
+
+<h2>Gebruik deze hint</h2>
+<span id="hint"></span>
+
+<p>Jouw antwoord:</p>
+<p id="p1"></p>
+
+<button id="button" onclick="checkWinCondition()">
+    Druk dan. Als je durft.
+</button>
+
+<!--CSS: make it look nice (: -->
+
+<script>
+    const userInput = [];
+    const solution = ["D","A","E","D","A","X"];
+
+    let currentAnswerIndex = 0;
+    const boxjes = Array.from(document.getElementsByClassName('box'));
+
+    updateHint(getBoxje(solution[currentAnswerIndex]));
+
+    boxjes.forEach((boxje, boxjeIndex) => {
+        boxje.addEventListener('click', function () {
+            if(checkAnswer(boxje)) {
+                userInput.push(boxje.id)
+                document.getElementById("p1").innerHTML = userInput;
+                currentAnswerIndex++;
+
+                // todo: make sure this doesnt break on last boxje
+                updateHint(getBoxje(solution[currentAnswerIndex]))
+
+                boxjes.forEach((boxje) => {
+                    boxje.classList.remove('error');
+                });
+            } else {
+                boxje.classList.add('error');
+            }
+        });
+    });
+
+    function getBoxje(solutionId) {
+        return document.getElementById(solutionId);
+    }
+
+    function checkAnswer(boxje) {
+        return solution[currentAnswerIndex] === boxje.id;
+    }
+
+    function checkWinCondition () {
+        if (userInput.toString() === solution.toString()) {
+            document.getElementById("button").innerHTML = "Yeah! Je hebt gewonnen!"
+        } else {
+            document.getElementById("button").innerHTML = "mwamwa. Probeer opnieuw (:"
+        }
+    }
+
+    function updateHint (boxje) {
+        document.getElementById("hint").innerHTML = boxje.dataset.hint;
+    }
+</script>
+</body>
+</html>
