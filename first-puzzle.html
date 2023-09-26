@@ -6,7 +6,7 @@
     <title>First Puzzle</title>
 </head>
 <body>
-<a href="/index.html" onclick="route()">Home</a>
+<a href="./index.html">Home</a>
 
 <h1>Voltooi voor een gratis koelkast!</h1>
 
@@ -55,11 +55,9 @@
 </button>
 
 <!--CSS: make it look nice (: -->
-
-<script src="js/router.js"></script>
 <script>
     const userInput = [];
-    const solution = ["D","A","E","D","A","X"];
+    const solution = ["D","A","E","D","A"];
 
     let currentAnswerIndex = 0;
     const boxjes = Array.from(document.getElementsByClassName('box'));
@@ -73,7 +71,8 @@
                 document.getElementById("p1").innerHTML = userInput;
                 currentAnswerIndex++;
 
-                // todo: make sure this doesnt break on last boxje
+                // todo: make sure this doesnt break non-existent answers
+                // todo: make sure this doesnt break when the solution is completed
                 updateHint(getBoxje(solution[currentAnswerIndex]))
 
                 boxjes.forEach((boxje) => {
