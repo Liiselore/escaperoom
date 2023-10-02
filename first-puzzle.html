@@ -14,34 +14,7 @@
 
 <!-- implementeer CSS GRID-->
 
-<div class="container">
-    <div id="A" class="box a" data-hint="Aap" >
-        A
-    </div>
-    <div id="B" class="box b" data-hint="Banaan">
-        B
-    </div>
-    <div id="C" class="box c" data-hint="Comkommer">
-        C
-    </div>
-    <div id="D" class="box d" data-hint="Dinosaurus">
-        D
-    </div>
-    <div id="E" class="box e" data-hint="Ei">
-        E
-    </div>
-    <div id="F" class="box f" data-hint="Factorio">
-        F
-    </div>
-    <div id="G" class="box g" data-hint="Gay">
-        G
-    </div>
-    <div id="H" class="box h" data-hint="Hallo">
-        H
-    </div>
-    <div id="I" class="box i" data-hint="Iris">
-        I
-    </div>
+<div class="container" id="boxjesContainer">
 </div>
 
 <h2>Gebruik deze hint</h2>
@@ -56,6 +29,69 @@
 <script>
     let userInput = [];
     let solution = null;
+
+    const dictionary = [
+    {
+            id: 'A',
+            hint: 'Aap',
+        },
+        {
+            id: 'B',
+            hint: 'Boris',
+        },
+        {
+            id: 'C',
+            hint: 'Comkommer',
+        },
+        {
+            id: 'D',
+            hint: 'Dino',
+        },
+        {
+            id: ': )',
+            hint: 'Blij',
+        },
+        {
+            id: ': (',
+            hint: 'Sip',
+        },
+        {
+            id: ': D',
+            hint: 'Heel blij',
+        },
+        {
+            id: ':((',
+            hint: 'Heel sip',
+        },
+    ]
+
+    generateBoxjes();
+
+    function generateBoxjes() {
+        const amountOfBoxjes = 8;
+        const boxjesContainer = document.getElementById('boxjesContainer');
+
+        for(let i = 0; i < amountOfBoxjes; i++){
+            const dictionaryEntry = getRandomArbitrary(0, dictionary.length);
+            boxjesContainer.appendChild(generateBoxje(dictionary[dictionaryEntry]));
+            removeFromDictionary(dictionaryEntry);
+        }
+    }
+
+    function generateBoxje(letter) {
+        const boxje = document.createElement('div');
+        boxje.id = letter.id;
+        boxje.classList = `box ${letter.id}`;
+        boxje.dataset.hint = letter.hint;
+        boxje.innerText = letter.id;
+
+        return boxje;
+    }
+
+    function removeFromDictionary(entryToDelete) {
+        dictionary.splice(entryToDelete, 1);
+    }
+
     const boxjes = Array.from(document.getElementsByClassName('box'));
 
     setNewSolution();
@@ -96,7 +132,7 @@
     }
 
     function getRandomArbitrary(min, max) {
-        return Math.ceil(Math.random() * (max - min) + min);
+        return Math.floor(Math.random() * (max - min) + min);
     }
 
     function getBoxje(solutionId) {
