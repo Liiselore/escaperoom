@@ -66,15 +66,13 @@
         boxje.addEventListener('click', function () {
             if(checkAnswer(boxje)) {
                 userInput.push(boxje.id)
-
-                checkWinCondition();
-
                 document.getElementById("p1").innerHTML = userInput;
                 currentAnswerIndex++;
 
-                // todo: make sure this doesnt break non-existent answers
-                // todo: make sure this doesnt break when the solution is completed
-                updateHint(getBoxje(solution[currentAnswerIndex]))
+                if(checkWinCondition() === false) {
+                    // todo: make sure this doesnt break non-existent answers
+                    updateHint(getBoxje(solution[currentAnswerIndex]))
+                }
 
                 boxjes.forEach((boxje) => {
                     boxje.classList.remove('error');
@@ -97,7 +95,7 @@
         if (userInput.toString() === solution.toString()) {
             alert('JE HEBT GEWONNEN');
         } else {
-            return;
+            return false;
         }
     }
 
