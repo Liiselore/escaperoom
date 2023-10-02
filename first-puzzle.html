@@ -25,10 +25,26 @@
 
 <button onclick="reset()">RESET</button>
 
+<div class="modal" id="modal">
+    <div class="content">
+        <h1>Je hebt gewonnen!</h1>
+
+        <p id="Solution"></p>
+
+        <button onclick="playAgain()" class="button">Speel opnieuw</button>
+    </div>
+</div>
+
 <!--CSS: make it look nice (: -->
 <script>
     let userInput = [];
     let solution = null;
+
+    const modal = document.getElementById('modal');
+
+    function toggleModal() {
+        modal.classList.toggle('active');
+    };
 
     const dictionary = [
     {
@@ -145,7 +161,8 @@
 
     function checkWinCondition () {
         if (userInput.toString() === solution.toString()) {
-            alert('JE HEBT GEWONNEN');
+            document.getElementById('Solution').innerText = `Het antwoord was ${solution}`;
+            toggleModal();
         } else {
             return false;
         }
@@ -166,6 +183,11 @@
         boxjes.forEach((boxje) => {
             boxje.classList.remove('error');
         });
+    }
+
+    function playAgain() {
+        reset();
+        toggleModal();
     }
 </script>
 </body>
