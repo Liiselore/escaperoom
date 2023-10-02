@@ -55,10 +55,12 @@
 <!--CSS: make it look nice (: -->
 <script>
     let userInput = [];
-    const solution = ["D","A","E","D","A"];
+    let solution = null;
+    const boxjes = Array.from(document.getElementsByClassName('box'));
+
+    setNewSolution();
 
     let currentAnswerIndex = 0;
-    const boxjes = Array.from(document.getElementsByClassName('box'));
 
     updateHint(getBoxje(solution[currentAnswerIndex]));
 
@@ -83,6 +85,20 @@
         });
     });
 
+    function setNewSolution() {
+        solution = [];
+
+        const amountOfLetters = 5;
+        
+        for(let i = 0; i < amountOfLetters; i++){
+            solution.push(boxjes[getRandomArbitrary(0, boxjes.length - 1)].id);
+        }
+    }
+
+    function getRandomArbitrary(min, max) {
+        return Math.ceil(Math.random() * (max - min) + min);
+    }
+
     function getBoxje(solutionId) {
         return document.getElementById(solutionId);
     }
@@ -106,10 +122,10 @@
     function reset() {
         userInput = [];
         document.getElementById("p1").innerHTML = userInput;
+        currentAnswerIndex = 0;
 
+        setNewSolution();
         updateHint(getBoxje(solution[0]));
-
-        document.getElementById("button").innerHTML = "Druk dan. Als je durft."
 
         boxjes.forEach((boxje) => {
             boxje.classList.remove('error');
