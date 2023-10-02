@@ -50,10 +50,6 @@
 <p>Jouw antwoord:</p>
 <p id="p1"></p>
 
-<button id="button" onclick="checkWinCondition()">
-    Druk dan. Als je durft.
-</button>
-
 <button onclick="reset()">RESET</button>
 
 <!--CSS: make it look nice (: -->
@@ -70,6 +66,9 @@
         boxje.addEventListener('click', function () {
             if(checkAnswer(boxje)) {
                 userInput.push(boxje.id)
+
+                checkWinCondition();
+
                 document.getElementById("p1").innerHTML = userInput;
                 currentAnswerIndex++;
 
@@ -96,9 +95,9 @@
 
     function checkWinCondition () {
         if (userInput.toString() === solution.toString()) {
-            document.getElementById("button").innerHTML = "Yeah! Je hebt gewonnen!"
+            alert('JE HEBT GEWONNEN');
         } else {
-            document.getElementById("button").innerHTML = "mwamwa. Probeer opnieuw (:"
+            return;
         }
     }
 
@@ -113,7 +112,7 @@
         updateHint(getBoxje(solution[0]));
 
         document.getElementById("button").innerHTML = "Druk dan. Als je durft."
-        
+
         boxjes.forEach((boxje) => {
             boxje.classList.remove('error');
         });
