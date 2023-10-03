@@ -16,9 +16,18 @@ h1 {
     margin: 0 0 16px 0;
 }
 
+h2 {
+    margin: 0 0 0 0;
+}
+
 p {
     font-size: 16px;
     margin: 0 0 40px 0;
+}
+
+#hint {
+    display: block;
+    margin-bottom: 40px;
 }
 
 .container {
