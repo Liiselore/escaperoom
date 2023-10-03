@@ -81,6 +81,14 @@
         },
     ];
 
+    const colorDictionary = [
+        '#EF476F',
+        '#FFD166',
+        '#06D6A0',
+        '#118AB2',
+        '#073B4C',
+    ];
+
     generateBoxjes();
 
     function generateBoxjes() {
@@ -100,6 +108,9 @@
         boxje.classList = `box ${letter.id}`;
         boxje.dataset.hint = letter.hint;
         boxje.innerText = letter.id;
+        boxje.style.flexBasis = `${getRandomArbitrary(getRandomArbitrary(8, 16), getRandomArbitrary(16, 36))}%`;
+        boxje.style.height = `${getRandomArbitrary(100, 200)}px`;
+        boxje.style.background = colorDictionary[getRandomArbitrary(0, colorDictionary.length)];
 
         return boxje;
     }
