@@ -79,7 +79,7 @@
             id: ':((',
             hint: 'Heel sip',
         },
-    ]
+    ];
 
     generateBoxjes();
 
@@ -124,7 +124,6 @@
                 currentAnswerIndex++;
 
                 if(checkWinCondition() === false) {
-                    // todo: make sure this doesnt break non-existent answers
                     updateHint(getBoxje(solution[currentAnswerIndex]))
                 }
 
