@@ -9,8 +9,8 @@
     position: absolute;
     width: 20px;
     height: 20px;
-    top: 0;
-    left: 0;
+    top: calc(50% - 10px);
+    left: calc(50% - 10px);
     border-radius: 20px;
     background: gold;
     transition:1s linear;
