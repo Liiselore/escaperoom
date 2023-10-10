@@ -24,7 +24,7 @@
     <div class="content">
         <h1>Je hebt gewonnen!</h1>
 
-        <p>Je hebt <span id="amountOfClicks"></span> keer geklikt.</p>
+        <p>Je hebt <span id="amountOfClicks"></span> keer geklikt. <span id="extraWinInfo"></span></p>
 
         <button onclick="playAgain()" class="button">Speel opnieuw</button>
     </div>
@@ -71,7 +71,18 @@
 
     function updateAmountOfClicksEl() {
         document.getElementById('amountOfClicks').innerText = amountOfClicks;
+        document.getElementById('extraWinInfo').innerText = getExtraWinInfo();
     }
+
+    function getExtraWinInfo() {
+        if (amountOfClicks === 1) {
+            return 'Wat een baas!';
+        } else if(amountOfClicks > 10) {
+            return 'Pffff wat slecht...';
+        } else {
+            return '';
+        }
+    };
 
     function win() {
         upClickedAmount();
