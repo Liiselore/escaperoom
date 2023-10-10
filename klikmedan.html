@@ -18,8 +18,6 @@
 
 <div class="container" id="Container">
     <div id="klikMeDanDivje" onclick="win()"></div>
-
-    <button onclick="move()">MOVE</button>
 </div>
 
 <div class="modal" id="modal">
@@ -38,10 +36,22 @@
     const maxLeft = container.offsetWidth - klikMeDanDivjeEl.offsetWidth;
     const maxTop = container.offsetHeight - klikMeDanDivjeEl.offsetHeight;
 
+    let moveIntervalId;
+
     function move() {
         klikMeDanDivjeEl.style.left = `${getRandomArbitrary(0, maxLeft)}px`;
         klikMeDanDivjeEl.style.top = `${getRandomArbitrary(0, maxTop)}px`;
     } 
+
+    function startMoving() {
+        moveIntervalId = setInterval(move, 1000);
+    }
+
+    function stopMoving() {
+        clearInterval(moveIntervalId);
+    }
+
+    startMoving();
 
     function getRandomArbitrary(min, max) {
         return Math.floor(Math.random() * (max - min) + min);
@@ -52,11 +62,12 @@
     };
 
     function win() {
-        alert('Je hebt gewonnen');
+        stopMoving();
+        toggleModal();
     }
 
     function reset() {
-
+        startMoving();
     }
 
     function playAgain() {
