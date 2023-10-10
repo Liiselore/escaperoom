@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="klikmedan.css">
+    <link rel="stylesheet" href="general.css">
+<head>
+    <meta charset="UTF-8">
+    <title>Klik me dan</title>
+</head>
+<body>
+<header>
+    <nav>
+        <a href="./index.html">Home</a>
+        <a href="./klikopvolgorde.html">first puzzle</a>
+    </nav>
+</header>
+
+<h1>Klik het divje!</h1>
+
+<div class="container" id="Container">
+    <div id="klikMeDanDivje" onclick="win()"></div>
+
+    <button onclick="move()">MOVE</button>
+</div>
+
+<div class="modal" id="modal">
+    <div class="content">
+        <h1>Je hebt gewonnen!</h1>
+
+        <button onclick="playAgain()" class="button">Speel opnieuw</button>
+    </div>
+</div>
+
+<script>
+    const modalEl = document.getElementById('modal');
+    const klikMeDanDivjeEl = document.getElementById('klikMeDanDivje');
+    const container = document.getElementById('Container');
+
+    const maxLeft = container.offsetWidth - klikMeDanDivjeEl.offsetWidth;
+    const maxTop = container.offsetHeight - klikMeDanDivjeEl.offsetHeight;
+
+    function move() {
+        klikMeDanDivjeEl.style.left = `${getRandomArbitrary(0, maxLeft)}px`;
+        klikMeDanDivjeEl.style.top = `${getRandomArbitrary(0, maxTop)}px`;
+    } 
+
+    function getRandomArbitrary(min, max) {
+        return Math.floor(Math.random() * (max - min) + min);
+    }
+
+    function toggleModal() {
+        modalEl.classList.toggle('active');
+    };
+
+    function win() {
+        alert('Je hebt gewonnen');
+    }
+
+    function reset() {
+
+    }
+
+    function playAgain() {
+        reset();
+        toggleModal();
+    }
+</script>
+</body>
+</html>

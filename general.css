@@ -25,38 +25,7 @@ p {
     margin: 0 0 40px 0;
 }
 
-#hint {
-    display: block;
-    margin-bottom: 40px;
-}
-
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    width: 100%;
-}
-
-.box {
-    flex: 0 0 0px;
-    border: solid 1px black;
-    padding: 50px;
-    margin: 10px;
-    text-align: center;
-    border-radius: 25px;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-}
-
-.box:hover {
-    transform: scale(1.05);
-    cursor: pointer;
-}
-
-.box.error {
-    border-color: red;
-}
+/** MODAL **/
 
 .modal {
     background: dodgerblue;
