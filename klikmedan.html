@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-    <link rel="stylesheet" href="klikmedan.css">
-    <link rel="stylesheet" href="general.css">
+<link rel="stylesheet" href="klikmedan.css">
+<link rel="stylesheet" href="general.css">
 <head>
     <meta charset="UTF-8">
     <title>Klik me dan</title>
@@ -43,12 +43,13 @@
 
     function upClickedAmount() {
         amountOfClicks++;
+        makeCircleBigger();
     }
 
     function move() {
         klikMeDanDivjeEl.style.left = `${getRandomArbitrary(0, maxLeft)}px`;
         klikMeDanDivjeEl.style.top = `${getRandomArbitrary(0, maxTop)}px`;
-    } 
+    }
 
     function startMoving() {
         move();
@@ -60,6 +61,14 @@
     }
 
     startMoving();
+
+    function makeCircleBigger(){
+        if (amountOfClicks > 2 && amountOfClicks < 4) {
+            klikMeDanDivjeEl.style.width = "200px";
+            klikMeDanDivjeEl.style.height = "200px";
+            console.log("GROTER WORDEN DAN JUNGE")
+        }
+    }
 
     function getRandomArbitrary(min, max) {
         return Math.floor(Math.random() * (max - min) + min);
@@ -77,7 +86,7 @@
     function getExtraWinInfo() {
         if (amountOfClicks === 1) {
             return 'Wat een baas!';
-        } else if(amountOfClicks > 10) {
+        } else if (amountOfClicks > 10) {
             return 'Pffff wat slecht...';
         } else {
             return '';
