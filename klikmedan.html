@@ -35,6 +35,9 @@
     const klikMeDanDivjeEl = document.getElementById('klikMeDanDivje');
     const container = document.getElementById('Container');
 
+    let divjeWidth = klikMeDanDivjeEl.style.width;
+    let divjeHeight = klikMeDanDivjeEl.style.height;
+
     let moveIntervalId;
     let amountOfClicks = 0;
 
@@ -43,12 +46,12 @@
     }
 
     function setMaxTop() {
-         return container.offsetHeight - klikMeDanDivjeEl.offsetHeight;
+        return container.offsetHeight - klikMeDanDivjeEl.offsetHeight;
     }
 
     function upClickedAmount() {
         amountOfClicks++;
-        makeCircleBigger();
+        makeCircleBiggerAfterXClicks();
     }
 
     function move() {
@@ -67,13 +70,21 @@
 
     startMoving();
 
-    function makeCircleBigger(){
+    function makeCircleGrow() {
+        divjeWidth = divjeWidth + 50 + "px";
+        divjeHeight = divjeHeight + 50 + "px";
+        setMaxTop();
+        setMaxLeft();
+        console.log("GROTER WORDEN DAN JUNGE")
+    }
+
+    function makeCircleBiggerAfterXClicks() {
         if (amountOfClicks === 3) {
-            klikMeDanDivjeEl.style.width = "200px";
-            klikMeDanDivjeEl.style.height = "200px";
-            setMaxTop()
-            setMaxLeft()
-            console.log("GROTER WORDEN DAN JUNGE")
+            makeCircleGrow();
+        } else if (amountOfClicks === 5) {
+            makeCircleGrow();
+        } else if (amountOfClicks === 8) {
+            makeCircleGrow();
         }
     }
 
