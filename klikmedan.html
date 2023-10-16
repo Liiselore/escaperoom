@@ -35,11 +35,16 @@
     const klikMeDanDivjeEl = document.getElementById('klikMeDanDivje');
     const container = document.getElementById('Container');
 
-    const maxLeft = container.offsetWidth - klikMeDanDivjeEl.offsetWidth;
-    const maxTop = container.offsetHeight - klikMeDanDivjeEl.offsetHeight;
-
     let moveIntervalId;
     let amountOfClicks = 0;
+
+    function setMaxLeft() {
+        return container.offsetWidth - klikMeDanDivjeEl.offsetWidth;
+    }
+
+    function setMaxTop() {
+         return container.offsetHeight - klikMeDanDivjeEl.offsetHeight;
+    }
 
     function upClickedAmount() {
         amountOfClicks++;
@@ -47,8 +52,8 @@
     }
 
     function move() {
-        klikMeDanDivjeEl.style.left = `${getRandomArbitrary(0, maxLeft)}px`;
-        klikMeDanDivjeEl.style.top = `${getRandomArbitrary(0, maxTop)}px`;
+        klikMeDanDivjeEl.style.left = `${getRandomArbitrary(0, setMaxLeft())}px`;
+        klikMeDanDivjeEl.style.top = `${getRandomArbitrary(0, setMaxTop())}px`;
     }
 
     function startMoving() {
@@ -63,9 +68,11 @@
     startMoving();
 
     function makeCircleBigger(){
-        if (amountOfClicks > 2 && amountOfClicks < 4) {
+        if (amountOfClicks === 3) {
             klikMeDanDivjeEl.style.width = "200px";
             klikMeDanDivjeEl.style.height = "200px";
+            setMaxTop()
+            setMaxLeft()
             console.log("GROTER WORDEN DAN JUNGE")
         }
     }
@@ -76,7 +83,7 @@
 
     function toggleModal() {
         modalEl.classList.toggle('active');
-    };
+    }
 
     function updateAmountOfClicksEl() {
         document.getElementById('amountOfClicks').innerText = amountOfClicks;
@@ -91,7 +98,7 @@
         } else {
             return '';
         }
-    };
+    }
 
     function win() {
         upClickedAmount();
