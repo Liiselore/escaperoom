@@ -71,8 +71,11 @@
     startMoving();
 
     function makeCircleGrow() {
-        divjeWidth = divjeWidth + 50 + "px";
-        divjeHeight = divjeHeight + 50 + "px";
+        const divje = document.getElementById('klikMeDanDivje');
+        const divjeWidth = divje.clientWidth; // Huidige breedte in pixels
+        const newDivjeWidth = divjeWidth + 50; // Vergroten met 50 pixels
+        divje.style.width = newDivjeWidth + 'px'; // Stel de nieuwe breedte in
+        divje.style.height = newDivjeWidth + 'px'; // Pas de hoogte aan voor een vierkante vorm
         setMaxTop();
         setMaxLeft();
         console.log("GROTER WORDEN DAN JUNGE")
@@ -84,6 +87,8 @@
         } else if (amountOfClicks === 5) {
             makeCircleGrow();
         } else if (amountOfClicks === 8) {
+            makeCircleGrow();
+        } else if (amountOfClicks === 15) {
             makeCircleGrow();
         }
     }
